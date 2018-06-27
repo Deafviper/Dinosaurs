@@ -8,9 +8,8 @@ const form = document.querySelector('.favDinosaur')
 const dinoLister = function(ev){
     ev.preventDefault()
     const entry = document.createElement('li') 
-    
-    dinoFeeder()
-    entry.textContent += dinomaker().value
+    entry.textContent += dinomaker() + " " + dinoFeeder()
+    debugger
     list.appendChild(entry)
 }
 
@@ -19,15 +18,15 @@ const dinomaker = function(){
     const dinoEntry = document.createElement('span')
     dinoEntry.textContent = name
     dinoEntry.classList.add('fancy')
-    return dinoEntry.value
+    return dinoEntry.innerHTML
 }
 
 const dinoFeeder = function(){
     const diet = document.querySelector('.dinoDiet').value
-    const dinoFood = document.createElement('span')
+    let dinoFood = document.createElement('span')
     dinoFood.textContent = diet
     dinoFood.classList.add('bold')
-    return dinoFood.value
+    return dinoFood.innerHTML
 }
 
 
