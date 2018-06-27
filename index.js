@@ -5,29 +5,35 @@ const form = document.querySelector('.favDinosaur')
 
 
 
-const dinoLister = function(ev){
+const addDinoToList = function(ev){
     ev.preventDefault()
     const entry = document.createElement('li') 
-    entry.textContent += dinomaker() + " " + dinoFeeder()
-    debugger
+    entry.appendChild(dinomaker())
+    entry.appendChild(dinoFeeder())
     list.appendChild(entry)
 }
 
 const dinomaker = function(){
     const name = document.querySelector('.dinoName').value
     const dinoEntry = document.createElement('span')
-    dinoEntry.textContent = name
-    dinoEntry.classList.add('fancy')
-    return dinoEntry.innerHTML
+    dinoEntry.textContent = name 
+    dinoEntry.classList.add('bold')
+    return dinoEntry
 }
 
 const dinoFeeder = function(){
     const diet = document.querySelector('.dinoDiet').value
     let dinoFood = document.createElement('span')
-    dinoFood.textContent = diet
-    dinoFood.classList.add('bold')
-    return dinoFood.innerHTML
+    dinoFood.textContent =  " and it eats " + diet
+    if(diet == "People" || diet === "people"){
+        dinoFood.textContent += "! How scary."
+    }
+    else{
+        dinoFood.textContent += "."
+    }
+    dinoFood.classList.add('fancy')
+    return dinoFood
 }
 
 
-form.addEventListener('submit',dinoLister)
+form.addEventListener('submit',addDinoToList)
